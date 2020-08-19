@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/JohnPCarvalho/finant/backend/api"
 
 func main() {
-	fmt.Println("Yeah")
+	api.Run()
 }
