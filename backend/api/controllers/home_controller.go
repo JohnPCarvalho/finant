@@ -6,5 +6,6 @@ import (
 )
 
 func (server *Server) Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("Home aqui galerinha do youtube %i", http.StatusOK)
+	//fmt.FPrintf(w, "Home aqui galerinha do youtube %i", http.StatusOK)
+	fmt.Fprintf(w, "Homepage")
 }
