@@ -1,0 +1,12 @@
+import React from "react";
+
+export default function Signup() {
+
+    
+
+    return (
+        <View>
+            <Text>Create Account</Text>
+        </View>
+    )
+}
