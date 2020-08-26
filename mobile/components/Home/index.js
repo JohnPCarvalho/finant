@@ -5,11 +5,14 @@ import EntriesList from '../Entry/EntriesList/index';
 
 import { 
     Container, 
-    LogoTitle,
     AppHeader,
     Balance,
     AboutBalance
 } from './styles';
+
+import {
+    LogoTitle
+} from '../Login/styles';
 
 export default function Home ( props ) {
 
@@ -22,15 +25,11 @@ export default function Home ( props ) {
                 <LogoTitle>Finant</LogoTitle>
                 <AboutBalance>Voce tem:</AboutBalance>
                 <View>
-                    <Text>{currency}: {balance}</Text> 
+                    <Balance>{currency}: {balance}</Balance> 
                 </View>
-                
+                <EntriesList valueName="Lanche" moneyValue={10.00}/>
                 
             </AppHeader>
         </Container>
     )
 }
-
-/* 
-
- */

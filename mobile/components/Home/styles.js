@@ -23,12 +23,6 @@ export const AppHeader = styled.View`
 `;
 
 
-export const LogoTitle = styled.Text`
-    font-size: 48px;
-    text-align: center;
-    margin: 1px 0;
-`; 
-
 export const Balance = styled.Text `
     font-size: 56px;
 `;
