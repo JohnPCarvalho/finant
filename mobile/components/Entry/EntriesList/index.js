@@ -2,18 +2,18 @@ import React from 'react';
 import { View, Text } from 'react-native'
 import PropTypes from 'prop-types';
 
-import { ListContainer, ListRow } from './styles';
+import { ListContainer, RowText, ListRow } from './styles';
  
-export default function EntriesList ( props ) {
+export default function EntryRow ( props ) {
     return (
-        <ListContainer>
-            <Text>{props.valueName}</Text>
-            <Text value={props.moneyValue}> {props.moneyValue}</Text>
-        </ListContainer>
+            <ListRow>
+                <RowText>Nome: {props.valueName}</RowText>
+                <RowText value={props.moneyValue}>R$ {props.moneyValue}</RowText>
+            </ListRow>
     )
 } 
 
-EntriesList.propTypes = {
+EntryRow.propTypes = {
     valueName: PropTypes.string,
     moneyValue: PropTypes.number
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    flex: auto;
+    flex: 1;
     background-color: #1c1c1c;
     align-items: center;
     justify-content: center;
@@ -22,23 +22,23 @@ export const About = styled.Text`
 export const InputField = styled.TextInput`
     color: #80f3bf;
     margin-bottom: 20px;
-    padding: 10px;
-    width: 300px;
+    padding: 16px;
+    width: 75%;
     border: 2px solid white;
     border-radius: 8px;
 `;
 
 export const ButtonsView = styled.View`
     flex-direction: row;
-    width: 300px;
+    width: 75%;
     align-items: center;
     justify-content: space-between;
     color: white;
 `;
 
 export const Buttons = styled.TouchableOpacity`
-    height: 42px;
-    width: 145px;
+    padding: 16px;
+    width: 45%;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
