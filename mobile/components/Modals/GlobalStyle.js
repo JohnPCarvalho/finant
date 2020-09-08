@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    width: 50%;
-    margin: 20;
-    background-color: "white";
+    width: 90%;
+    margin: auto;
+    background-color: white;
     border-radius: 20px;
     padding: 35px;
-    align-items: "center";
+    align-items: center;
 `;
+
 
 export const TitleView = styled.View`
     width: 100%;
@@ -29,9 +30,22 @@ export const LabelText = styled.Text`
 `;
 
 export const ModalInput = styled.TextInput`
-    width: 30%;
+    width: 100%;
 `;
 
 export const ModalFooter = styled.View`
     width: 100%;
+`;
+
+export const ModalButton = styled.TouchableOpacity`
+    width: 100%;
+    border-radius: 10px;
+    background-color: #80f3bf;
+    align-items: center;
+`
+
+export const TextButton = styled.Text`
+    font-weight: 500;
+    color: white;
+    font-size: 24px;
 `;

@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const LogoTitle = styled.Text`    
     color: #02EEA2;
-    font-size: 54px;
+    font-size: 50px;
     text-align: center;
 `;
 

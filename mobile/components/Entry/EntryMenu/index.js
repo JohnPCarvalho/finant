@@ -12,7 +12,7 @@ import {
 export default function EntryMenu( props ) {
     return (
         <MenuRow>
-            <MenuText>Incomes/Outcomes</MenuText>
+            <MenuText>Incomes/Outgoings</MenuText>
             <AddButton onPress={props.addItem}><ButtonText>+</ButtonText></AddButton>
         </MenuRow>
     )

@@ -1,8 +1,8 @@
-import React, { useState, Fragment, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 
 import EntryRow from '../Entry/EntriesList/index';
 import EntryMenu from '../Entry/EntryMenu/index';
-import { Text, Modal } from 'react-native';
+import { Text, Modal, View, StyleSheet, TouchableHighlight } from 'react-native';
 
 import { 
     AppHeader,
@@ -31,7 +31,7 @@ export default function Home ( props ) {
     const [listItems, setListItems] = useState([
         {
             nome: 'Salario',
-            valor: 1600.00
+            valor: 1650.00
         },
         {
             nome: 'McDonalds',
@@ -62,13 +62,17 @@ export default function Home ( props ) {
             setBalance(sum.toFixed(2));
         }
         calculateBalace(listItems);
-    }, [])
+    }, [balance])
+
+    const changeModalVisibility = ( modalState ) => {
+        setModalVisible(!modalState);
+    }
 
     const showDetails = ( name, value ) => {
         console.log(name + " " + value);
     }
 
-    const addListItem = () => {
+    const addListItem = ( name, value ) => {
         console.log("johnny");
         const itemTeste = {
             nome: 'Johnny',
@@ -79,10 +83,14 @@ export default function Home ( props ) {
 
     return(
         <Container>
+
+            {/* modal fica aqui */}
             <AddNewItem 
-                title="Adicionar"
                 visibility={modalVisible}
+                close={changeModalVisibility}
+                title="Adicionar item"
             />
+    
             <AppHeader>
                 <LogoTitle>Finant</LogoTitle>
                 <AboutBalance>Você tem:</AboutBalance>
@@ -117,3 +125,42 @@ export default function Home ( props ) {
         </Container>
     )
 }
+
+const styles = StyleSheet.create({
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      borderRadius: 20,
+      padding: 35,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5
+    },
+    openButton: {
+      backgroundColor: "#F194FF",
+      borderRadius: 20,
+      padding: 10,
+      elevation: 2
+    },
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+    modalText: {
+      marginBottom: 15,
+      textAlign: "center"
+    }
+  });
