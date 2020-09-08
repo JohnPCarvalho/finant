@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 
 import EntryRow from '../Entry/EntriesList/index';
 import EntryMenu from '../Entry/EntryMenu/index';
-import { Text } from 'react-native';
+import { Text, Modal } from 'react-native';
 
 import { 
     AppHeader,
@@ -18,8 +18,6 @@ import AddNewItem from '../Modals/AddItem';
 import {
     Container
 } from '../Login/styles';
-import { ListContainer } from '../Entry/EntriesList/styles';
-import { ScrollView, FlatList } from 'react-native-gesture-handler';
 
 
 export default function Home ( props ) {
@@ -66,6 +64,9 @@ export default function Home ( props ) {
         calculateBalace(listItems);
     }, [])
 
+    const showDetails = ( name, value ) => {
+        console.log(name + " " + value);
+    }
 
     const addListItem = () => {
         console.log("johnny");
@@ -104,6 +105,8 @@ export default function Home ( props ) {
                                 <EntryRow
                                     moneyValue={item.valor.toFixed(2)}
                                     valueName={item.nome}
+                                    //openModal={showDetails(item.nome, item.valor)}
+                                    key={item.nome+item.valor}
                                 />
                             )
                         })
