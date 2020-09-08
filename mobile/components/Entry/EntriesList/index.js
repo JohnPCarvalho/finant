@@ -8,12 +8,12 @@ export default function EntryRow ( props ) {
     return (
             <ListRow>
                 <RowText>Nome: {props.valueName}</RowText>
-                <RowText value={props.moneyValue}>R$ {props.moneyValue}</RowText>
+                <RowText value={props.moneyValue}> R$ {props.moneyValue}</RowText>
             </ListRow>
     )
 } 
 
 EntryRow.propTypes = {
     valueName: PropTypes.string,
-    moneyValue: PropTypes.number
+    moneyValue: PropTypes.string,
 }

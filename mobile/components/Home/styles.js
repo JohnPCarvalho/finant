@@ -35,8 +35,9 @@ export const AboutBalance = styled.Text`
 export const ListView = styled.View`
     width: 90%;
     flex: 1;
-    background-color: #434343;
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #616161;
+    margin-bottom: 20px;
 `;
 
 export const List = styled.ScrollView`
