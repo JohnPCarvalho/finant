@@ -14,9 +14,9 @@ export const LogoTitle = styled.Text`
 `;
 
 export const About = styled.Text`
-    color: #80f3bf;
-    font-size: 16px; 
-    margin-bottom: 100px;
+  color: #80f3bf;
+  font-size: 16px;
+  margin-bottom: 100px;
 `;
 
 export const InputField = styled.TextInput`

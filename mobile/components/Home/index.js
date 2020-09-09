@@ -1,166 +1,139 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from "react";
 
-import EntryRow from '../Entry/EntriesList/index';
-import EntryMenu from '../Entry/EntryMenu/index';
-import { Text, Modal, View, StyleSheet, TouchableHighlight } from 'react-native';
-
-import { 
-    AppHeader,
-    LogoTitle,
-    Balance,
-    AboutBalance,
-    ListView,
-    List
-} from './styles';
-
-import AddNewItem from '../Modals/AddItem';
+import EntryRow from "../Entry/EntriesList/index";
+import EntryMenu from "../Entry/EntryMenu/index";
 
 import {
-    Container
-} from '../Login/styles';
+  AppHeader,
+  LogoTitle,
+  Balance,
+  AboutBalance,
+  ListView,
+  List,
+  EmptyListText,
+  EmptyTextView,
+} from "./styles";
 
+import AddNewItem from "../Modals/AddItem";
 
-export default function Home ( props ) {
+import { Container } from "../Login/styles";
 
-    //setBalance sera executado sempre que um novo gasto/entrada for inserido a partir do menu *IMPLEMENTAR
-    //setCurrency provavelmente sera utilizado por configuracao depois
+export default function Home(props) {
+  //setBalance sera executado sempre que um novo gasto/entrada for inserido a partir do menu *IMPLEMENTAR
+  //setCurrency provavelmente sera utilizado por configuracao depois
 
-    const [modalVisible, setModalVisible] = useState(false);
-    const [balance, setBalance] = useState(); 
-    const [currency, setCurrency] = useState("R$");
-    const [listItems, setListItems] = useState([
-        {
-            nome: 'Salario',
-            valor: 1650.00
-        },
-        {
-            nome: 'McDonalds',
-            valor: -20.00
-        },
-        {
-            nome: 'BK',
-            valor: -41.30
-        },
-        {
-            nome: 'FODASE',
-            valor: -20.00
-        },
-        {
-            nome: 'FODASE',
-            valor: -80.00
-        }, 
-    ]);
+  const today = new Date();
 
-    //efeito que ira fazer a soma de todos os itens e atualizara o state do saldo atual
-    useEffect(() => {
-        async function calculateBalace(list) {
-            let sum = 0;
-            list.map((listItem, index) => {
-                return sum += listItem.valor
-            })
-            console.log(sum);
-            setBalance(sum.toFixed(2));
-        }
-        calculateBalace(listItems);
-    }, [balance])
+  const [modalVisible, setModalVisible] = useState(false);
+  const [balance, setBalance] = useState();
+  const [currency, setCurrency] = useState("R$");
+  const [modalValueName, setModalValueName] = useState("");
+  const [modalMoneyValue, setModalMoneyValue] = useState();
+  const [listItems, setListItems] = useState([]);
+  const [checked, setChecked] = useState('');
+  
 
-    const changeModalVisibility = ( modalState ) => {
-        setModalVisible(!modalState);
+  //efeito que ira fazer a soma de todos os itens e atualizara o state do saldo atual
+  useEffect(() => {
+    async function calculateBalace(list) {
+      let sum = 0;
+      list.map((listItem, index) => {
+        return (sum += listItem.valor);
+      });
+      console.log(sum);
+      setBalance(sum.toFixed(2));
     }
+    calculateBalace(listItems);
+  }, [listItems]);
 
-    const showDetails = ( name, value ) => {
-        console.log(name + " " + value);
-    }
+  const changeModalVisibility = (modalState) => {
+    setModalVisible(!modalState);
+  };
 
-    const addListItem = ( name, value ) => {
-        console.log("johnny");
-        const itemTeste = {
-            nome: 'Johnny',
-            valor: 10.00
-        }
-       setListItems(state => [...listItems, itemTeste])
-    }
+  const showDetails = (name, value) => {
+    console.log(name + " " + value);
+  };
 
-    return(
-        <Container>
+  const addListItem = (name, value) => {
 
-            {/* modal fica aqui */}
-            <AddNewItem 
-                visibility={modalVisible}
-                close={changeModalVisibility}
-                title="Adicionar item"
-            />
-    
-            <AppHeader>
-                <LogoTitle>Finant</LogoTitle>
-                <AboutBalance>Você tem:</AboutBalance>
-                <Balance>{currency}: {balance}</Balance> 
-            </AppHeader>
-            <ListView>
-                <EntryMenu 
-                    addItem={() => setModalVisible(true)}
+    //cria novo objeto para ser inserido no state
+    const newItem = {
+      nome: name,
+      tipo: checked,
+      valor: parseFloat((checked + value)),
+      data: {
+        day: today.getDate(),
+        month: today.getMonth() + 1,
+        year: today.getFullYear()
+      }
+    };
+    console.log(newItem);
+    //atualiza o state baseado no array antigo e fecha o modal
+    setListItems((state) => [...listItems, newItem]);
+    setModalVisible(!modalVisible);
+    console.log(listItems);
+    //limpeza dos states
+    setModalValueName("");
+    setModalMoneyValue("");
+    setChecked("");
+  };
+
+  return (
+    <Container>
+      <AddNewItem
+        visibility={modalVisible}
+        close={changeModalVisibility}
+        title="Adicionar item"
+        backButtonAction={() => {   
+          setModalValueName("");
+          setModalMoneyValue("");
+          setModalVisible(!modalVisible); 
+        }}
+        valueName={modalValueName}
+        moneyValue={modalMoneyValue}
+        updateModalValueName={setModalValueName}
+        updateModalMoneyValue={setModalMoneyValue}
+        addItem={() => addListItem(modalValueName, modalMoneyValue)}
+        despesa="-"
+        entrada="+"
+        selectDespesa={() => setChecked("-")}
+        selectEntrada={() => setChecked("+")}
+        checkedDespesa={checked === "-" ? "checked" : "unchecked"}
+        checkedEntrada={checked === "+" ? "checked" : "unchecked"}
+      />
+
+      <AppHeader>
+        <LogoTitle>Finant</LogoTitle>
+        <AboutBalance>Você tem:</AboutBalance>
+        <Balance>
+          {currency}: {balance}
+        </Balance>
+      </AppHeader>
+      <ListView>
+        <EntryMenu addItem={() => setModalVisible(true)} />
+        {/* menu para adicionar entries, ficara "grudado" na list */}
+        <List>
+          {listItems.length === 0 ? (
+            <EmptyTextView>
+              <EmptyListText> Lista vazia :( </EmptyListText>
+              <EmptyListText>
+                Adicione uma nova despesa ou entrada
+              </EmptyListText>
+            </EmptyTextView>
+          ) : (
+            listItems.map((item) => {
+              return (
+                <EntryRow
+                  moneyValue={item.valor.toFixed(2)}
+                  valueName={item.nome}
+                  //openModal={showDetails(item.nome, item.valor)}
+                  key={item.nome + Date.now()}
                 />
-                {/* menu para adicionar entries, ficara "grudado" na list */}
-                <List>
-                    {
-                    listItems.length === 0
-                    ? <Text>Nao tem nada :(</Text>
-                        : (
-                            listItems.map((item, index) => {
-                            console.log("lista");
-                            console.log(item);
-                            return (
-                                <EntryRow
-                                    moneyValue={item.valor.toFixed(2)}
-                                    valueName={item.nome}
-                                    //openModal={showDetails(item.nome, item.valor)}
-                                    key={item.nome+item.valor}
-                                />
-                            )
-                        })
-                        )
-                    } 
-                </List>
-            </ListView>
-        </Container>
-    )
+              );
+            })
+          )}
+        </List>
+      </ListView>
+    </Container>
+  );
 }
-
-const styles = StyleSheet.create({
-    centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22
-    },
-    modalView: {
-      margin: 20,
-      backgroundColor: "white",
-      borderRadius: 20,
-      padding: 35,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5
-    },
-    openButton: {
-      backgroundColor: "#F194FF",
-      borderRadius: 20,
-      padding: 10,
-      elevation: 2
-    },
-    textStyle: {
-      color: "white",
-      fontWeight: "bold",
-      textAlign: "center"
-    },
-    modalText: {
-      marginBottom: 15,
-      textAlign: "center"
-    }
-  });

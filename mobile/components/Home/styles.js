@@ -21,6 +21,7 @@ export const LogoTitle = styled.Text`
     margin-bottom: 10px;
 `;
 
+
 export const Balance = styled.Text `
     color: #80f3bf;
     font-size: 56px;
@@ -40,8 +41,17 @@ export const ListView = styled.View`
     margin-bottom: 20px;
 `;
 
+export const EmptyTextView = styled.View`
+    width: 70%;
+    margin: 25% auto;
+`;
+
+export const EmptyListText = styled.Text`
+    font-size: 24px;
+    color: white;
+    text-align: center;
+`;
+
 export const List = styled.ScrollView`
     width: 100%
 `;
-
-
