@@ -52,6 +52,7 @@ export const ButtonText = styled.Text`
 
 export const ButtonSignupScreen = styled.View`
     width: 300px;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 `;

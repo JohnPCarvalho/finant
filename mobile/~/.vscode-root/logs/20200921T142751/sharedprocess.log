@@ -1,0 +1,2 @@
+[2020-09-21 14:27:55.580] [sharedprocess] [info] main {"machineId":"7fe04f3d57c4c0c1d9da6216701f12d94dab98f18c7e2e5821ce7ed63d2b0b5d","windowId":2}
+[2020-09-21 14:27:55.610] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/johnny/Documents/finant/mobile/~/.vscode-root/User/snippets'

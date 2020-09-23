@@ -1,0 +1,8 @@
+[2020-09-21 14:29:28.526] [sharedprocess] [info] main {"machineId":"7fe04f3d57c4c0c1d9da6216701f12d94dab98f18c7e2e5821ce7ed63d2b0b5d","windowId":2}
+[2020-09-21 14:29:28.575] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/johnny/Documents/finant/mobile/~/.vscode-root/User/snippets'
+[2020-09-21 14:29:34.966] [sharedprocess] [info] Installing extension: be5invis.vscode-custom-css
+[2020-09-21 14:29:35.315] [sharedprocess] [info] Downloaded extension: be5invis.vscode-custom-css /home/johnny/Documents/finant/mobile/~/.vscode-root/CachedExtensionVSIXs/be5invis.vscode-custom-css-3.0.10
+[2020-09-21 14:29:35.409] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/.be5invis.vscode-custom-css-3.0.10: be5invis.vscode-custom-css
+[2020-09-21 14:29:35.409] [sharedprocess] [info] Renamed to /root/.vscode/extensions/be5invis.vscode-custom-css-3.0.10
+[2020-09-21 14:29:35.410] [sharedprocess] [info] Installation completed. be5invis.vscode-custom-css
+[2020-09-21 14:29:35.426] [sharedprocess] [info] Extensions installed successfully: be5invis.vscode-custom-css

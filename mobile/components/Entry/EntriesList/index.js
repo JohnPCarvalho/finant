@@ -15,7 +15,7 @@ export default function EntryRow(props) {
       }
     >
       <ListRow>
-        <RowText>Nome: {props.valueName}</RowText>
+        <RowText> {props.valueName}</RowText>
         <RowText value={props.moneyValue}> R$ {props.moneyValue}</RowText>
       </ListRow>
     </TouchableHighlight>

@@ -18,6 +18,7 @@ export const TitleView = styled.View`
 `;
 
 export const Title = styled.Text`
+  
   font-size: 24px;
   padding: 10px;
 `;
@@ -60,8 +61,7 @@ export const TextButton = styled.Text`
 `;
 
 export const RadioView = styled.View`
-    flex-direction: row;
-    justify-content: center;
-    margin: 5px 0;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px 0;
 `;
-

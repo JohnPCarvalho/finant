@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import { RadioButton } from "react-native-paper";
 
@@ -14,11 +14,10 @@ import {
   ModalFooter,
   ModalButton,
   TextButton,
-  RadioView
+  RadioView,
 } from "./GlobalStyle";
 
 export default function addNewItem(props) {
-
   return (
     <Modal
       animationType="slide"
@@ -56,12 +55,12 @@ export default function addNewItem(props) {
             <LabelText>Despesa</LabelText>
           </RadioView>
           <RadioView>
-          <RadioButton
-            value={props.entrada}
-            status={props.checkedEntrada}
-            onPress={props.selectEntrada}
-          />
-          <LabelText>Entrada</LabelText>
+            <RadioButton
+              value={props.entrada}
+              status={props.checkedEntrada}
+              onPress={props.selectEntrada}
+            />
+            <LabelText>Entrada</LabelText>
           </RadioView>
         </ModalBody>
         <ModalFooter>

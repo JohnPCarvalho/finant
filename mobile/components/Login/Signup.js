@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+
+import api from '../../api/api';
 
 import {
     Container,
@@ -21,6 +22,10 @@ export default function Signup({ props, navigation }) {
 
     //*TODO
     //criar funcao que cadastra o usuario no banco de dados
+
+    const registerUser = ( name, email, password ) => {
+
+    } 
 
     return (
         <Container>
@@ -58,6 +63,9 @@ export default function Signup({ props, navigation }) {
                     passwordSignup: password
                 })} >
                     <ButtonText>Back to login</ButtonText>
+                </Buttons>
+                <Buttons >
+                    <ButtonText>Register</ButtonText>
                 </Buttons>
             </ButtonSignupScreen>
         </Container>

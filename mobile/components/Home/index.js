@@ -18,9 +18,11 @@ import AddNewItem from "../Modals/AddItem";
 
 import { Container } from "../Login/styles";
 
+
 export default function Home(props) {
   //setBalance sera executado sempre que um novo gasto/entrada for inserido a partir do menu *IMPLEMENTAR
   //setCurrency provavelmente sera utilizado por configuracao depois
+
 
   const today = new Date();
 
@@ -30,8 +32,7 @@ export default function Home(props) {
   const [modalValueName, setModalValueName] = useState("");
   const [modalMoneyValue, setModalMoneyValue] = useState();
   const [listItems, setListItems] = useState([]);
-  const [checked, setChecked] = useState('');
-  
+  const [checked, setChecked] = useState("");
 
   //efeito que ira fazer a soma de todos os itens e atualizara o state do saldo atual
   useEffect(() => {
@@ -50,24 +51,19 @@ export default function Home(props) {
     setModalVisible(!modalState);
   };
 
-  const showDetails = (name, value) => {
-    console.log(name + " " + value);
-  };
-
   const addListItem = (name, value) => {
-
     //cria novo objeto para ser inserido no state
     const newItem = {
       nome: name,
       tipo: checked,
-      valor: parseFloat((checked + value)),
+      valor: parseFloat(checked + value),
       data: {
         day: today.getDate(),
         month: today.getMonth() + 1,
-        year: today.getFullYear()
-      }
+        year: today.getFullYear(),
+      },
     };
-    console.log(newItem);
+    
     //atualiza o state baseado no array antigo e fecha o modal
     setListItems((state) => [...listItems, newItem]);
     setModalVisible(!modalVisible);
@@ -84,10 +80,10 @@ export default function Home(props) {
         visibility={modalVisible}
         close={changeModalVisibility}
         title="Adicionar item"
-        backButtonAction={() => {   
+        backButtonAction={() => {
           setModalValueName("");
           setModalMoneyValue("");
-          setModalVisible(!modalVisible); 
+          setModalVisible(!modalVisible);
         }}
         valueName={modalValueName}
         moneyValue={modalMoneyValue}
